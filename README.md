@@ -36,7 +36,7 @@ To run the demo follow these steps:
 4. From the Quick Start click on credentials and copy the **APP_ID, APP_REGION and AUTH_KEY**. These will be used later.
 5. Also copy the **AUTH_KEY** from the Auth Keys tab.
 6. Navigate to the Users tab, and delete all the default users and groups leaving it clean **(very important)**.
-7. Download the repository [here](https://github.com/samwelnyandoro/Samberry-Meeting-Web-App-with-Audio-and-Video-via-Node.js-and-React/archive/main.zip) or by running `git clone https://github.com/samwelnyandoro/Samberry-Meeting-Web-App-with-Audio-and-Video-via-Node.js-and-React.git` and open it in a code editor.
+7. Download the repository [here](https://github.com/samwelnyandoro/samberry/archive/main.zip) or by running `git clone https://github.com/samwelnyandoro/samberry.git` and open it in a code editor.
 8. Create a file called **.env** in the root folder of your project.
 9. Create the content of the **.env** file as follow.
 
