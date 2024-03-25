@@ -1,7 +1,10 @@
 # ALX Webstack - Portfolio Project
 
 <p align="center">
-  <a href="https:/samwelnyandoro/" target="_blank" rel="noreferrer"><img src="https://user-images.githubusercontent.com/36915374/184318716-5d1801e4-2407-4ba5-8a7a-dff5cf492a4e.png" alt="my banner"></a>
+  <a href="https://github.com/samwelnyandoro/samberry" target="_blank" rel="noreferrer"><img src="./src/images/lpage.png" alt="my banner"></a>
+</p>
+
+ <a href="https://github.com/samwelnyandoro/samberry" target="_blank" rel="noreferrer"><img src="./src/images/mpage.png" alt="my banner"></a>
 </p>
 
 # Samberry - Basic Meeting Web App
