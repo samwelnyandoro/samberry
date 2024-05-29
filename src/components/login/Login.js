@@ -2,18 +2,16 @@ import { useEffect, useRef, useContext } from "react";
 import validator from "validator";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 import withModal from "../common/Modal";
 import SignUp from "../register/SignUp";
 import Context from "../../context";
 
 const Login = (props) => {
   const { toggleModal } = props;
-
   const { setUser, setIsLoading, cometChat } = useContext(Context);
-
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-
   const history = useHistory();
 
   useEffect(() => {
@@ -38,9 +36,9 @@ const Login = (props) => {
     return await cometChat.login(user.id, authKey);
   };
 
-  const signin = async (email, password) => {
+  const signin = async (email, hashedPassword) => {
     const url = 'http://localhost:8080/login';
-    return await axios.post(url, { email, password });
+    return await axios.post(url, { email, password: hashedPassword });
   }
 
   const login = async () => {
@@ -48,7 +46,9 @@ const Login = (props) => {
     if (isUserCredentialsValid(email, password)) {
       try {
         setIsLoading(true);
-        const authenticatedUser = await signin(email, password);
+        // Hash the password using SHA-256 before sending it to the server
+        const hashedPassword = CryptoJS.SHA256(password).toString();
+        const authenticatedUser = await signin(email, hashedPassword);
         const cometChatAccount = await loginCometChat({ id: authenticatedUser.data.id });
         if (cometChatAccount) {
           localStorage.setItem('auth', JSON.stringify(authenticatedUser.data));
