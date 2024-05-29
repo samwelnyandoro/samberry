@@ -6,11 +6,14 @@
   "dependencies": {
     "@cometchat-pro/chat": "^3.0.11",
     "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@twemoji/api": "^14.1.0",
     "axios": "^1.6.8",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dateformat": "^4.0.0",
     "dotenv": "^10.0.0",
     "emoji-mart": "^5.5.2",
@@ -24,17 +27,15 @@
     "react-scripts": "5.0.1",
     "react-twemoji": "^0.5.0",
     "uuid": "^9.0.1",
-    "@emotion/react": "^11",
-    "@twemoji/api": "^14.1.0",
     "validator": "^13.11.0",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "web-vitals": "^3.0.4",
-		"jest": "26.6.0",
-		"jest-canvas-mock": "^2.3.1",
-		"babel-jest": "26.6.0",
-    "nodemon": "^2.0.15"
+    "babel-jest": "26.6.0",
+    "jest": "26.6.0",
+    "jest-canvas-mock": "^2.3.1",
+    "nodemon": "^2.0.15",
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "dev": "nodemon index.js",
@@ -61,9 +62,9 @@
       "last 1 safari version"
     ]
   },
-	"jest": {
-		"moduleNameMapper": {
-			"\\.(css|scss|png|svg|pdf|jpg|jpeg|wav)$": "<rootDir>/src/resources/__mocks__/fileMock.js"
-		}
-	}
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss|png|svg|pdf|jpg|jpeg|wav)$": "<rootDir>/src/resources/__mocks__/fileMock.js"
+    }
+  }
 }

@@ -2,6 +2,7 @@ import { useRef, useContext } from "react";
 import validator from "validator";
 import { v4 as uuidv4 } from "uuid";
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 import Context from "../../context";
 
 function SignUp(props) {
@@ -32,7 +33,7 @@ function SignUp(props) {
       return false;
     }
     if (validator.isEmpty(password) || !validator.isLength(password, { min: 6 })) {
-      alert("Please input your password. You password must have at least 6 characters");
+      alert("Please input your password. Your password must have at least 6 characters");
       return false;
     }
     if (validator.isEmpty(confirmPassword)) {
@@ -46,9 +47,9 @@ function SignUp(props) {
     return true;
   };
 
-  const createUser = async ({ id, email, password, fullname, avatar }) => {
+  const createUser = async ({ id, email, hashedPassword, fullname, avatar }) => {
     const url = 'http://localhost:8080/users/create';
-    return await axios.post(url, { id, email, password, fullname, avatar });
+    return await axios.post(url, { id, email, password: hashedPassword, fullname, avatar });
   };
 
   const createCometChatAccount = async ({ id, fullname, avatar }) => {
@@ -77,7 +78,11 @@ function SignUp(props) {
       setIsLoading(true);
       const avatar = generateAvatar();
       const id = uuidv4();
-      const response = await createUser({ id, email, password, fullname, avatar });
+      
+      // Hash the password using SHA-256
+      const hashedPassword = CryptoJS.SHA256(password).toString();
+
+      const response = await createUser({ id, email, hashedPassword, fullname, avatar });
       if (response && response.data.message) {
         alert(response.data.message);
       } else {
@@ -106,7 +111,7 @@ function SignUp(props) {
         </div>
         <div className="signup__subtitle"></div>
         <div className="signup__form">
-          <input type="text" placeholder="Fulllname" ref={fullnameRef} />
+          <input type="text" placeholder="Fullname" ref={fullnameRef} />
           <input type="text" placeholder="Email" ref={emailRef} />
           <input type="password" placeholder="Password" ref={passwordRef} />
           <input
